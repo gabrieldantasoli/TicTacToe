@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body > header,body>footer{
+    background-color: rgba(60, 60, 60, 1);
+    color: #dda520;
+    font-family: Permanent Marker;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+body > footer{
+    margin-top: 1.5rem;
+}
+body > footer a{
+    color: #dda520;
+    text-decoration: none;
+}
+body > footer a:hover{
+    color: yellow;
+}
+
+.game{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    background-color: rgb(24, 23, 24);
+    padding: 1.5vh;
+    margin: 0 auto;
+}
+.game > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #dda520;
+    background-color: rgba(60, 60, 60, 0.624);
+    text-transform: uppercase;
+    font-family: Permanent Marker;
+}
+.score{
+    width: 70%;
+    max-width: 250px;
+    margin: 1rem auto;
+    border: 2px solid rgba(60, 60, 60, 1);
+    border-radius: 2.3rem;
+}
+.score *{
+    font-family: Permanent Marker;
+    text-align: center;
+}
+.score p{
+    font-size: 4rem;
+    background-color: rgba(60, 60, 60, 1);
+    color: #dda520;
+    border-radius: 2rem 2rem 0 0;
+}
+.score > div{
+    display: flex;
+}
+.score > div > div{
+    width: 50%;
+    font-size: 3rem;
+    border: 2px solid rgba(60, 60, 60, 1);
+}
+.score > .two > div:nth-child(1){
+    border-bottom-left-radius: 2rem;
+}
+.score > .two > div:nth-child(2){
+    border-bottom-right-radius: 2rem;
+}
+
+@media (orientation: portrait) {
+    .game{
+        width: calc(93vw);
+        height: calc(93vw);
+        max-width: calc(450px + 3vw);
+        max-height: calc(450px + 3vw);
+        gap: 1.5vw;
+        border-radius: 3vw;
+    }
+    .game > div{
+        width: 30vw;
+        height: 30vw;
+        max-width: 150px;
+        max-height: 150px;
+        font-size: 20vw;
+    }
+    .game > div:nth-child(1){
+        border-top-left-radius: 2vw;
+    }
+    .game > div:nth-child(3){
+        border-top-right-radius: 2vw;
+    }.game > div:nth-child(7){
+        border-bottom-left-radius: 2vw;
+    }.game > div:nth-child(9){
+        border-bottom-right-radius: 2vw;
+    }
+}
+@media (orientation: landscape){
+    .game{
+        width: calc(93vh);
+        height: calc(93vh);
+        max-width: calc(450px + 3vh);
+        max-height: calc(450px + 3vh);
+        gap: 1.5vh;
+        border-radius: 3vh;
+    }
+    .game > div{
+        width: 30vh;
+        height: 30vh;
+        max-width: 150px;
+        max-height: 150px;
+        font-size: 20vh;
+    }
+    .game > div:nth-child(1){
+        border-top-left-radius: 2vh;
+    }
+    .game > div:nth-child(3){
+        border-top-right-radius: 2vh;
+    }.game > div:nth-child(7){
+        border-bottom-left-radius: 2vh;
+    }.game > div:nth-child(9){
+        border-bottom-right-radius: 2vh;
+    }
+}
