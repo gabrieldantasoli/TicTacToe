@@ -36,19 +36,6 @@ const tictactoe = {
             this.board[position] = this.simbols.options[this.simbols.turn_index];
             this.draw();
             let wining_sequences_index = this.check_wining_sequences(this.simbols.options[this.simbols.turn_index]);
-            if (wining_sequences_index >= 0){
-                this.game_is_over();
-                this.win = wining_sequences_index;
-                gameoveranimation();
-                if (this.does_change % 2 == 0 && this.simbols.options[this.simbols.turn_index] == 'x') {
-                    this.simbols.change();
-                }else if (this.does_change % 2 != 0 && this.simbols.options[this.simbols.turn_index] == 'o') {
-                    this.simbols.change();
-                }
-                this.does_change += 1;
-            }else{
-                this.simbols.change();
-            }
             let tot = 0;
             for (i in this.board) {
                 if (this.board[i] != '') {
@@ -58,6 +45,31 @@ const tictactoe = {
                     this.simbols.change();
                     changetie();
                 }
+            }
+            if (wining_sequences_index >= 0 && tot != 9){
+                let tot = 0;
+                for (i in this.board) {
+                    if (this.board[i] != '') {
+                        tot += 1;
+                    }
+                    if (tot == 9) {
+                        this.simbols.change();
+                        changetie();
+                    }
+                }
+                if (tot < 9) {
+                    this.game_is_over();
+                    this.win = wining_sequences_index;
+                    gameoveranimation();
+                    if (this.does_change % 2 == 0 && this.simbols.options[this.simbols.turn_index] == 'x') {
+                        this.simbols.change();
+                    }else if (this.does_change % 2 != 0 && this.simbols.options[this.simbols.turn_index] == 'o') {
+                        this.simbols.change();
+                    }
+                    this.does_change += 1;
+                }
+            }else{
+                this.simbols.change();
             }
             return true;
         }else {
@@ -151,4 +163,20 @@ function set() {
 
 function start() {
     tictactoe.start();
+}
+
+function Start() {
+    let x2 = document.querySelector('#x2');
+    let x1 = document.querySelector('#xboot');
+    let online = document.querySelector('#online');
+
+    if (x2.checked){
+        window.location.href = 'localx2.html'
+    }else if (x1.checked){
+        window.alert('Sorry , we are working in this mode . Try again after ):')
+    }else if (online.checked){
+        window.alert('Sorry , we are working in this mode . Try again after ):')
+    }else{
+        window.alert('choose an option !')
+    }
 }

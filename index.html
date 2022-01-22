@@ -5,36 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-
-    <!-- Link stylesheets -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <h1>Tic Tac Toe</h1>
     </header>
-    <div class="score">
-        <p>score</p>
-        <div class="one">
-            <div class="player1">x</div>
-            <div class="player2">o</div>
-        </div>
-        <div class="two">
-            <div class="score1">0</div>
-            <div class="score2">0</div>
-        </div>
+
+    <div class="choose">
+        <p>Mode Game</p>
+        <input type="radio" name="choose" id="x2">
+        <label for="x2"><div class="">Local - x2</div></label>
+
+        <input type="radio" name="choose" id="xboot">
+        <label for="xboot"><div class="">Local - xBoot</div></label>
+
+        <input type="radio" name="choose" id="online">
+        <label for="online"><div>Online - x2</div></label>
+
+        <button onclick="Start()">Start</button>
     </div>
-    <div class="game"></div>
-    <footer>
+
+    <footer style="position: fixed;bottom: 0;left: 0;right: 0;">
         <p>created by : <a href="https://github.com/gabrieldantasoli" target="_blank">Gabriel Dantas</a></p>
     </footer>
-    
 
-    <!-- Links interations => JAVASCRIPT -->
     <script src="js/tictactoe.js"></script>
-    <script>
-        tictactoe.init(document.querySelector('.game'));
-        tictactoe.start();
-    </script>
 </body>
 </html>

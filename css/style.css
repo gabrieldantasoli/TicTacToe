@@ -5,6 +5,9 @@
     padding: 0;
 }
 
+body{
+    min-height: 100vh;
+}
 body > header,body>footer{
     background-color: rgba(60, 60, 60, 1);
     color: #dda520;
@@ -72,7 +75,51 @@ body > footer a:hover{
 .score > .two > div:nth-child(2){
     border-bottom-right-radius: 2rem;
 }
-
+.choose input{
+    display: none;
+}
+i{
+    font-size: 4rem;
+    text-decoration: none;
+    color: black;
+    margin-top: 1.5rem;
+    margin-left: 5%;
+}
+.choose *{
+    font-family: Permanent Marker;
+}
+.choose{
+    margin: auto;
+    width: 70%;
+    max-width: 450px;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2.5rem;
+    border: 3px solid rgba(60, 60, 60, 1);
+}
+.choose p{
+    background-color: rgba(60, 60, 60, 1);
+    width: 100%;
+    color: #dda520;
+    text-align: center;
+    font-size: 3rem;
+    padding: 1rem 0;
+    border-radius: 2rem 2rem 0 0;
+}
+.choose label div,.choose button{
+    color: rgba(60, 60, 60, 1);
+    font-size: 2rem;
+    border: 2px solid rgba(60, 60, 60, 1);
+    padding: .5rem;
+    margin: .5rem 0;
+}
+.choose label div:hover,.choose label div.active{
+    color: #dda520;
+    border: 2px solid #dda520;
+}
 @media (orientation: portrait) {
     .game{
         width: calc(93vw);
