@@ -41,20 +41,26 @@ const tictactoe = {
                 if (this.board[i] != '') {
                     tot += 1;
                 }
-                if (tot == 9) {
+                if (tot == 9 && wining_sequences_index < 0) {
                     this.simbols.change();
                     changetie();
-                }
+                }else if (tot == 9 && wining_sequences_index >= 0) {
+                    this.game_is_over();
+                    this.win = wining_sequences_index;
+                    gameoveranimation();
+                    if (this.does_change % 2 == 0 && this.simbols.options[this.simbols.turn_index] == 'x') {
+                        this.simbols.change();
+                    }else if (this.does_change % 2 != 0 && this.simbols.options[this.simbols.turn_index] == 'o') {
+                        this.simbols.change();
+                    }
+                    this.does_change += 1;
+                };
             }
             if (wining_sequences_index >= 0 && tot != 9){
                 let tot = 0;
                 for (i in this.board) {
                     if (this.board[i] != '') {
                         tot += 1;
-                    }
-                    if (tot == 9) {
-                        this.simbols.change();
-                        changetie();
                     }
                 }
                 if (tot < 9) {
@@ -180,3 +186,8 @@ function Start() {
         window.alert('choose an option !')
     }
 }
+
+document.querySelectorAll('.button').forEach(item => item.addEventListener('click',function(e) {
+    document.querySelectorAll('.button').forEach(item => item.classList.remove('active'));
+    item.classList.toggle('active') ;
+}));
