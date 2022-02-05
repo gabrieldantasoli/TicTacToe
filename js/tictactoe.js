@@ -6,6 +6,8 @@ const tictactoe = {
     win : null,
     divs: document.querySelectorAll('.game div'),
     count: 0,
+    kindof: '',
+    bootTime: false,
     simbols: {
         options: ['x','o'],
         turn_index: 0,
@@ -30,9 +32,21 @@ const tictactoe = {
         this.container_element = container;
     },
 
+    makePlayBoot: function() {
+        while (true) {
+            let position = Math.round(Math.random()*8) ;
+            if (this.board[position] == '') {
+                this.makePlay(position)
+                break
+            }
+        }
+        console.log('ok')
+    },
+
     makePlay: function(position) {
         if (this.gameover) return false;
         if (this.board[position] === '') {
+            this.bootTime = (this.bootTime === false ? true : false) ;
             this.board[position] = this.simbols.options[this.simbols.turn_index];
             this.draw();
             let wining_sequences_index = this.check_wining_sequences(this.simbols.options[this.simbols.turn_index]);
@@ -75,7 +89,10 @@ const tictactoe = {
                     this.does_change += 1;
                 }
             }else{
-                this.simbols.change();
+                this.simbols.change() ;
+                if (this.bootTime) {
+                    this.makePlayBoot()
+                }
             }
             return true;
         }else {
@@ -177,9 +194,9 @@ function Start() {
     let online = document.querySelector('#online');
 
     if (x2.checked){
-        window.location.href = 'localx2.html'
+        window.location.href = 'localx2.html' ;
     }else if (x1.checked){
-        window.alert('Sorry , we are working in this mode . Try again after ):')
+        window.location.href = 'localxboot.html' ;
     }else if (online.checked){
         window.alert('Sorry , we are working in this mode . Try again after ):')
     }else{
