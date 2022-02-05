@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local - xBoot</title>
+
+    <!-- Link stylesheets -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Tic Tac Toe</h1>
+    </header>
+    <div class="score">
+        <p>score</p>
+        <div class="one">
+            <div class="player1">x</div>
+            <div class="player2">o</div>
+        </div>
+        <div class="two">
+            <div class="score1">0</div>
+            <div class="score2">0</div>
+        </div>
+    </div>
+    <div class="game"></div>
+    <a href="index.html"><i class="fas fa-house-user"></i></a>
+    <footer>
+        <p>created by : <a href="https://github.com/gabrieldantasoli" target="_blank">Gabriel Dantas</a></p>
+    </footer>
+    
+
+    <!-- Links interations => JAVASCRIPT -->
+    <script src="js/tictactoe.js"></script>
+    <script>
+        tictactoe.init(document.querySelector('.game'));
+        tictactoe.start();
+        tictactoe.kindof = 'xboot' ;
+    </script>
+</body>
+</html>
