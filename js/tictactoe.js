@@ -6,8 +6,6 @@ const tictactoe = {
     win : null,
     divs: document.querySelectorAll('.game div'),
     count: 0,
-    kindof: '',
-    bootTime: false,
     simbols: {
         options: ['x','o'],
         turn_index: 0,
@@ -32,15 +30,9 @@ const tictactoe = {
         this.container_element = container;
     },
 
-    makePlayBoot: function() {
-        
-        console.log('ok')
-    },
-
     makePlay: function(position) {
         if (this.gameover) return false;
         if (this.board[position] === '') {
-            this.bootTime = (this.bootTime === false ? true : false) ;
             this.board[position] = this.simbols.options[this.simbols.turn_index];
             this.draw();
             let wining_sequences_index = this.check_wining_sequences(this.simbols.options[this.simbols.turn_index]);
@@ -50,7 +42,12 @@ const tictactoe = {
                     tot += 1;
                 }
                 if (tot == 9 && wining_sequences_index < 0) {
-                    this.simbols.change();
+                    this.does_change += 1;
+                    if (this.does_change % 2 == 0 && this.simbols.options[this.simbols.turn_index] == 'x') {
+                        this.simbols.change();
+                    }else if (this.does_change % 2 != 0 && this.simbols.options[this.simbols.turn_index] == 'o') {
+                        this.simbols.change();
+                    }
                     changetie();
                 }else if (tot == 9 && wining_sequences_index >= 0) {
                     this.game_is_over();
@@ -187,7 +184,7 @@ function Start() {
     if (x2.checked){
         window.location.href = 'localx2.html' ;
     }else if (x1.checked){
-        window.location.href = 'localxboot.html' ;
+        window.alert('Sorry , we are working in this mode . Try again after ):')
     }else if (online.checked){
         window.alert('Sorry , we are working in this mode . Try again after ):')
     }else{
@@ -199,7 +196,7 @@ document.addEventListener('keydown',function(e) {
     var key = e.key ;
     if ('123456789'.search(key) >= 0) {
         tictactoe.makePlay(Number(e.key)-1) ; 
-    };
+    };  
 }) ;
 
 document.querySelectorAll('.button').forEach(item => item.addEventListener('click',function(e) {
