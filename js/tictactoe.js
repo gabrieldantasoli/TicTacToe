@@ -33,13 +33,7 @@ const tictactoe = {
     },
 
     makePlayBoot: function() {
-        while (true) {
-            let position = Math.round(Math.random()*8) ;
-            if (this.board[position] == '') {
-                this.makePlay(position)
-                break
-            }
-        }
+        
         console.log('ok')
     },
 
@@ -90,9 +84,6 @@ const tictactoe = {
                 }
             }else{
                 this.simbols.change() ;
-                if (this.bootTime) {
-                    this.makePlayBoot()
-                }
             }
             return true;
         }else {
@@ -204,7 +195,14 @@ function Start() {
     }
 }
 
+document.addEventListener('keydown',function(e) {
+    var key = e.key ;
+    if ('123456789'.search(key) >= 0) {
+        tictactoe.makePlay(Number(e.key)-1) ; 
+    };
+}) ;
+
 document.querySelectorAll('.button').forEach(item => item.addEventListener('click',function(e) {
     document.querySelectorAll('.button').forEach(item => item.classList.remove('active'));
     item.classList.toggle('active') ;
-}));
+})); 
